@@ -1,6 +1,8 @@
+import Dep from './Dep';
+import { target } from './Watcher'
 /*实现Oberser类：当某个对象属性值变动的时候能通知订阅者*/
-class Observer {
-    public createObserve(ob: object): void {
+export class Observer {
+    createObserve(ob: object): void {
         if (!ob || typeof ob !== 'object') {
             return;
         }
@@ -8,25 +10,26 @@ class Observer {
             this.defineReactive(ob, key, ob[key]);
         })
     }
-    public defineReactive(ob: object, key: string, val: any): void {
+    defineReactive(ob: object, key: string, val: any): void {
+        let dep = new Dep();
         let that = this;
         let child: void = that.createObserve(val);
         Object.defineProperty(ob, key, {
             enumerable: true,//可枚举
             configurable: false,//不能再define
-            get(): any {
-                /**在订阅者首次订阅的时候将其添加至订阅者列表 */
+            get(): any /**在订阅者首次订阅的时候将其添加至订阅者列表 */ {
+                target && dep.depend()
                 return val
             },
             set(newval: string) {
-                console.log('监听到变化了', `${val} -> ${newval}`)
+                if (newval === val) {
+                    return;
+                }
+                //console.log('监听到变化了', `${val} -> ${newval}`)
                 val = newval
                 child = that.createObserve(val)
+                dep.notify()//变化时通知
             }
         })
     }
 }
-
-let observer = new Observer()
-
-export default observer

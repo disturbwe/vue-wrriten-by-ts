@@ -1,6 +1,20 @@
 /**/
-import observer from "./utils/Observer"
+import { Mvvm } from './utils/Mvvm'
 
-let data = { user: {name: "123"} };
-observer.createObserve(data)
-data.user.name = "456"
+let template: string =
+    `
+    <div class="try">
+        <div>{{message}}</div>
+        <input type="text" v-model="message"/>
+    </div>
+    `
+
+const vm = new Mvvm({
+    el: "#app",
+    template,
+    data: {
+        message: '你好啊'
+    }
+})
+
+vm['message'] = '我很好'
