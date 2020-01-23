@@ -1,5 +1,6 @@
 import Dep from './Dep'
 import { Mvvm } from './Mvvm'
+import { _getVMVal, _setVMVal } from './directives'
 
 export let target: Watcher | null = null
 
@@ -18,7 +19,7 @@ export default class Watcher /*订阅者*/ {
     }
     get(): any {
         target = this;//将自己设置为当前订阅者
-        let value = this.$vm[this.$exp]
+        let value = _getVMVal(this.$vm, this.$exp);
         target = null;
         return value
     }
@@ -39,4 +40,4 @@ export default class Watcher /*订阅者*/ {
     }
 }
 
-export interface depIdsAble {}
+export interface depIdsAble { }

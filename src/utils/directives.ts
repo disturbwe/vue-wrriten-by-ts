@@ -23,6 +23,20 @@ export const directives: any = {
                 _setVMVal(vm, exp, newVal);
             }
         })
+    },
+    for(node: any, vm: Mvvm, exp: any) {
+        let parentNode: any = node.parentNode;
+        let temp: Array<string> = exp.split(' in ');
+        let list: Array<any> = vm[temp[1]]
+        let tagName = node.tagName;
+        let fragment: DocumentFragment = document.createDocumentFragment()
+        for (let key in list) {
+            let newNode = document.createElement(tagName);
+            directives.bind(newNode, vm, `${temp[1]}.${key}`, 'text')
+            fragment.appendChild(newNode)
+        }
+        parentNode.removeChild(node);
+        parentNode.appendChild(fragment);
     }
 }
 
@@ -35,7 +49,7 @@ const updater: any = {
     }
 };
 
-const _getVMVal: Function = (vm: Mvvm, exp: any): any => {
+export const _getVMVal: Function = (vm: Mvvm, exp: any): any => {
     var val = vm;
 
     if (exp = exp.split('.')) {
@@ -47,7 +61,7 @@ const _getVMVal: Function = (vm: Mvvm, exp: any): any => {
     return val;
 }
 
-const _setVMVal: Function = (vm: Mvvm, exp: any, value: any): void => {
+export const _setVMVal: Function = (vm: Mvvm, exp: any, value: any): void => {
     let val = vm;
 
     if (exp = exp.split('.')) {

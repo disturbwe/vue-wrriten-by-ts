@@ -8,14 +8,17 @@ export class Mvvm {
 
     constructor(options: OptionsAble) {
         this.options = options;
-        let data = this._data = this.options.data;
+        let observer = new Observer();
+        observer.createObserve(options.data, this);//创建绑定的监听
+
+        let data = this._data;
         let me = this;
+        
         Object.keys(data).forEach((key) => {//代理
             me._proxyData(key);
         });
 
-        let observer = new Observer();
-        observer.createObserve(options.data);//创建绑定的监听
+        
         this.compile = new Compile(options, this);//初始化视图
     }
 
@@ -25,10 +28,10 @@ export class Mvvm {
             configurable: false,
             enumerable: true,
             get() {
-                return me._data[key];
+                return Reflect.get(me._data, key)
             },
             set(newVal) {
-                me._data[key] = newVal;
+                Reflect.set(me._data, key, newVal)
             }
         });
     }
