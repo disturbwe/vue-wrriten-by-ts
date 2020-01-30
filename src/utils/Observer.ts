@@ -13,7 +13,6 @@ export class Observer {
         if (!isIE()) {
             this.$vm._data = this.defineReactive(ob)
         } else {
-            console.log('ie')
             Object.keys(ob).forEach((key) => {
                 this.defineReactive2(ob, key, ob[key]);
             })

@@ -16,8 +16,8 @@ export class Compile {
 
         if (this.$el) {
             this.$fragment = options.template ? this.node2Frament(this.parseDom(options.template.trim())) : this.$el//支持在html里直接写
-            this.init();
-            this.$el.appendChild(this.$fragment)
+            this.init();//将所有的特殊语句做处理
+            this.render()
         }
     }
 
@@ -29,12 +29,16 @@ export class Compile {
         // 将原生节点拷贝到fragment
         let fragment: DocumentFragment = document.createDocumentFragment(), child;
         //console.log(el)
-        while (child = el.firstChild) {
-            /**appendChild方法实际上会把节点添加到目标Node的子节点里面（在这里是DocumentFragment）,
-             * 如果你的节点在HTML页面已经渲染了其实它会移除并添加到目标Node，因此你这里才可以得以循环…… */
-            fragment.appendChild(child)
-        }
+        fragment.appendChild(el)
+        // while (child = el.firstChild) {
+        //     /**appendChild方法实际上会把节点添加到目标Node的子节点里面（在这里是DocumentFragment）,
+        //      * 如果你的节点在HTML页面已经渲染了其实它会移除并添加到目标Node，因此你这里才可以得以循环…… */
+        //     fragment.appendChild(child)
+        // }
         return fragment
+    }
+    render() {
+        this.$el.appendChild(this.$fragment)
     }
     init() {
         this.compileElement(this.$fragment)

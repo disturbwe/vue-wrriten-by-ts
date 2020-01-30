@@ -1,5 +1,6 @@
 /**/
 import { Mvvm } from './utils/Mvvm'
+import './style.scss'
 
 let template: string =
     `
@@ -12,7 +13,7 @@ let template: string =
     </div>
     `
 
-const vm = new Mvvm({
+const vm: Mvvm = new Mvvm({
     el: "#app",
     template,
     data: {

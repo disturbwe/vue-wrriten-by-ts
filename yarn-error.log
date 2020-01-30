@@ -1,0 +1,58 @@
+Arguments: 
+  D:\web\Nodejs\node.exe C:\Users\surrender\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add -D html-webpack-plugin@next
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\web\Nodejs\;D:\web\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;D:\JAVA\bin;D:\JAVA\jre\bin;C:\Users\surrender\AppData\Local\Microsoft\WindowsApps;;D:\Microsoft VS Code\bin;C:\Users\surrender\AppData\Roaming\npm;C:\Program Files\Bandizip\
+
+Yarn version: 
+  1.21.0
+
+Node version: 
+  10.16.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\surrender\AppData\Local\Yarn\Cache\v6\npm-inherits-2.0.1-b17d08d326b4423e568eff719f91b0b1cbdf69f1-integrity\node_modules\inherits\test.js' -> 'D:\web\突破自己\vue-wrriten-by-ts\node_modules\assert\node_modules\inherits\test.js'
+
+npm manifest: 
+  {
+    "name": "try-some-thing",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "dev": "./node_modules/.bin/webpack-dev-server",
+      "build": "./node_modules/.bin/webpack",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "awesome-typescript-loader": "^5.2.1",
+      "css-loader": "^3.4.2",
+      "extract-text-webpack-plugin": "^4.0.0-beta.0",
+      "html-webpack-plugin": "^3.2.0",
+      "node-sass": "^4.13.1",
+      "sass-loader": "^8.0.2",
+      "source-map-loader": "^0.2.4",
+      "style-loader": "^1.1.3",
+      "ts-loader": "^6.2.1",
+      "typescript": "^3.7.5",
+      "uglifyjs-webpack-plugin": "^2.2.0",
+      "webpack": "^4.41.5",
+      "webpack-cli": "^3.3.10",
+      "webpack-dev-server": "^3.10.1"
+    },
+    "dependencies": {
+      "cross-env": "^6.0.3",
+      "save-dev": "0.0.1-security"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
